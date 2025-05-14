@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.github.pashockerr.flipit.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "flipit.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+    "RenderItemMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
