@@ -1,6 +1,7 @@
 package com.github.pashockerr.flipit.mixin;
 
 import com.github.pashockerr.flipit.AnimationState;
+import com.github.pashockerr.flipit.config.ModConfig;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.*;
@@ -32,12 +33,12 @@ public abstract class RenderItemMixin{
                 float translation;
 
                 if(leftHand){
-                    rotation = org.joml.Math.lerp(AnimationState.lRotation, AnimationState.lRotation + AnimationState.ANGULAR_SPEED, partialTick);
-                    translation = Math.max((float)Math.sin(org.joml.Math.lerp(AnimationState.lRotation, AnimationState.lRotation + AnimationState.ANGULAR_SPEED, partialTick) / 2.0f), 0);
+                    rotation = org.joml.Math.lerp(AnimationState.lRotationTime * AnimationState.getAngularSpeed(), AnimationState.lRotationTime * AnimationState.getAngularSpeed() + AnimationState.getAngularSpeed(), partialTick);
+                    translation = Math.max((float)Math.sin(org.joml.Math.lerp(AnimationState.lRotationTime * AnimationState.getLinearSpeed(), AnimationState.lRotationTime * AnimationState.getLinearSpeed() + AnimationState.getLinearSpeed(), partialTick) / 2.0f), 0);
                 }
                 else{
-                    rotation = org.joml.Math.lerp(AnimationState.rRotation, AnimationState.rRotation + AnimationState.ANGULAR_SPEED, partialTick);
-                    translation = Math.max((float)Math.sin(org.joml.Math.lerp(AnimationState.rRotation, AnimationState.rRotation + AnimationState.ANGULAR_SPEED, partialTick) / 2.0f), 0);
+                   rotation = org.joml.Math.lerp(AnimationState.rRotationTime * AnimationState.getAngularSpeed(), AnimationState.rRotationTime * AnimationState.getAngularSpeed() + AnimationState.getAngularSpeed(), partialTick);
+                    translation = Math.max((float)Math.sin(org.joml.Math.lerp(AnimationState.rRotationTime * AnimationState.getLinearSpeed(), AnimationState.rRotationTime * AnimationState.getLinearSpeed() + AnimationState.getLinearSpeed(), partialTick) / 2.0f), 0);
                 }
 
                 poseStack.translate(0, translation, 0);
@@ -48,13 +49,13 @@ public abstract class RenderItemMixin{
 
             poseStack.popPose();
 
-            if(AnimationState.lRotation >= Math.PI * 2){
+            if(AnimationState.lRotationTime >= AnimationState.getlRotationTime()){
                 AnimationState.lAnimationRunning = false;
-                AnimationState.lRotation = 0.0f;
+                AnimationState.lRotationTime = 0;
             }
-            if(AnimationState.rRotation >= Math.PI * 2){
+            if(AnimationState.rRotationTime >= AnimationState.getlRotationTime()){
                 AnimationState.rAnimationRunning = false;
-                AnimationState.rRotation = 0.0f;
+                AnimationState.rRotationTime = 0;
             }
         }
     }

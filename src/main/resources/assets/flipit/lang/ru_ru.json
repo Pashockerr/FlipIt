@@ -1,5 +1,8 @@
 {
   "key.flipit.flip_l": "Подкинуть предмет в левой руке",
   "key.flipit.flip_r": "Подкинуть предмет в правой руке",
-  "key.flipit.flip_lr": "Подкинуть предмет в обеих руках"
+  "key.flipit.flip_lr": "Подкинуть предмет в обеих руках",
+
+  "flipit.configuration.rotations": "Обороты",
+  "flipit.configuration.rotation_ticks": "Время(в тиках)"
 }

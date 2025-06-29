@@ -21,9 +21,9 @@ public class ClientEventHandler {
     private static final int LR_KEY_CODE = flipLRKeymap.getKey().getValue();
 
     @SubscribeEvent
-    public static void render(ClientTickEvent.Pre clientTickEvent) {
-        AnimationState.lRotation += AnimationState.lAnimationRunning ? AnimationState.ANGULAR_SPEED : 0;
-        AnimationState.rRotation += AnimationState.rAnimationRunning ? AnimationState.ANGULAR_SPEED : 0;
+    public static void tick(ClientTickEvent.Pre clientTickEvent) {
+        AnimationState.lRotationTime += AnimationState.lAnimationRunning ? 1 : 0;
+        AnimationState.rRotationTime += AnimationState.rAnimationRunning ? 1 : 0;
     }
 
     @SubscribeEvent

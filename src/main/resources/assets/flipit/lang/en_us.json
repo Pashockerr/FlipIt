@@ -1,5 +1,8 @@
 {
   "key.flipit.flip_l": "Flip item in left hand",
   "key.flipit.flip_r": "Flip item in right hand",
-  "key.flipit.flip_lr": "Flip item in both hands"
+  "key.flipit.flip_lr": "Flip item in both hands",
+
+  "flipit.configuration.rotations": "Rotations",
+  "flipit.configuration.rotation_ticks": "Time(in ticks)"
 }
