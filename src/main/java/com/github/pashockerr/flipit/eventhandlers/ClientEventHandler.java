@@ -2,6 +2,7 @@ package com.github.pashockerr.flipit.eventhandlers;
 
 import com.github.pashockerr.flipit.AnimationState;
 import com.github.pashockerr.flipit.Flipit;
+import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -27,7 +28,7 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public static void keyInput(InputEvent.Key keyInputEvent) {
-        if (keyInputEvent.getAction() == GLFW.GLFW_PRESS) {
+        if (keyInputEvent.getAction() == GLFW.GLFW_PRESS && Minecraft.getInstance().screen == null) {
            var keyCode = keyInputEvent.getKey();
 
            if(keyCode == L_KEY_CODE)
